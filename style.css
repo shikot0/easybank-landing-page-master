@@ -69,11 +69,30 @@ nav {
 }
 .request-button {
     background: linear-gradient(to right,hsl(136, 65%, 51%),hsl(192, 70%, 51%));
+    background-size: 200%;
     border: none;
     padding: 10px 25px;
     border-radius: 50px;
     color: white;
     cursor: pointer;
+    animation: gradient 5s linear infinite forwards;
+}  
+@keyframes gradient {
+    0% {
+        background-position: 0%;
+    }
+    25% {
+        background-position: 50%;
+    }
+    50% { 
+        background-position: 100%;
+    }
+    75% { 
+        background-position: 50%;
+    }
+    100% {
+        background-position: 0%;
+    }
 }
 .request-button:hover {
     background: linear-gradient(to right,hsl(136, 68%, 62%),hsl(192, 71%, 61%));
@@ -111,13 +130,26 @@ nav {
     width: 65%;   
     animation: slide-in .5s linear 1 forwards;
     position: relative;
-} 
+    animation: slide-in .4s ease-out .3s 1 backwards; 
+}           
+@keyframes slide-in {  
+    from {       
+        background-position: top -13vw right -110vh; 
+    }
+}
 #hero-mockups { 
     width: 90%;     
     position: absolute;
     right: -120px; 
     top: -110px;
+    animation: fade-in .5s linear 1 backwards;
 }   
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-100px) 
+    } 
+}
 #reasons-section {
     background: hsl(220, 16%, 96%);
     padding: 4% 10%;
@@ -270,6 +302,9 @@ footer > div:last-of-type {
     #header-links {
         gap: 10px;
     }
+    #hero-section {
+        height: auto; 
+    }
     #hero-image-section {
         background: url(images/bg-intro-desktop.svg);
         background-repeat: no-repeat;
@@ -277,8 +312,8 @@ footer > div:last-of-type {
         background-size: 130%;
         width: 65%;   
     } 
-    #hero-mockups { 
-        width: 100%;     
+    #hero-mockups {  
+        width: 95%;     
         right: -100px; 
         top: -90px;  
     } 
@@ -346,7 +381,7 @@ footer > div:last-of-type {
         padding: 0;
     }
     #hero-text-section {
-        padding: 18% 5% 10%; 
+        padding: 2% 5% 10%;    
         width: 100%;  
         gap: 25px;  
         align-items: center;
@@ -360,20 +395,21 @@ footer > div:last-of-type {
         text-align: center; 
     }
     #hero-image-section {
-        background: url(images/bg-intro-mobile.svg);
+        background: url(images/image-mockups.png),url(images/bg-intro-mobile.svg);
         background-repeat: no-repeat; 
-        background-position: right 50% top -100px;        
-        background-size: cover;
-        width: 100%;    
+        background-position: top -110px left 50%, top -100px right 50%;        
+        background-size: 80%, cover;               
+        width: 100%;      
         animation: slide-in .5s linear 1 forwards;
-        height: 30vh;  
-    }  
+        height: 40vh;      
+        animation: none;  
+    }      
     #hero-mockups {  
-        width: 90%; 
-        display: block;     
-        margin: 0 auto; 
+        /* width: 90%;  */ 
+        display: none;     
+        /* margin: 0 auto; 
         transform: translateY(-29%);      
-        position: static; 
+        position: static;  */
     }  
     #reasons-section {
         padding: 4% 5%;
